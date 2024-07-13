@@ -3,3 +3,11 @@
 .env
 /alembic/__pycache__
 *.pyc
+
+*.py[cod]
+*.swp
+*.swo
+.DS_Store
+
+.vscode/
+.idea/

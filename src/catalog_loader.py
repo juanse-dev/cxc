@@ -3,17 +3,12 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from models.base import Base
 from models.catalog import Agency, Profession, Ethnicity, Gender
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
+from config import Config
 
 def load_catalog(file_path):
     catalogos_df = pd.read_csv(file_path, delimiter=';')
 
-    engine = create_engine(DATABASE_URL)
+    engine = create_engine(Config.DATABASE_URL)
     session_factory = sessionmaker(bind=engine)
     session = session_factory()
 

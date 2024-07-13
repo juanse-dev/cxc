@@ -1,7 +1,7 @@
-fastapi
-uvicorn
-sqlalchemy
-pandas
-psycopg2-binary
-python-dotenv
-alembic
+alembic==1.13.2
+numpy==2.0.0
+pandas==2.2.2
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+SQLAlchemy==2.0.31
+uvicorn==0.30.1
