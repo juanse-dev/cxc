@@ -1,7 +1,7 @@
 import psycopg2
 import os
+import pandas as pd
 from dotenv import load_dotenv
-
 
 def connect():
     try:
@@ -30,11 +30,20 @@ def db_initial_setup(connection):
     execute_sql_file('./ddl.sql', connection)
     print("DB set up executed successfully")
 
+def read_csv(file_path):
+    df = pd.read_csv(file_path, sep=';')
+    for index, row in df.iterrows():
+        print(row['agency_name'], row['class_title'], row['ethnicity'], row['gender'])
+        if index == 10:
+            break
+
 def main():
     connection = connect()
     if connection:
         db_initial_setup(connection)
         connection.close()
+    read_csv('./catalogos.csv')
+
 
 
 if __name__ == '__main__':
